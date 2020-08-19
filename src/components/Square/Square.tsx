@@ -1,8 +1,10 @@
 import React from 'react'; 
 
+type value = 'X' | 'O' | null;
+
 interface Props {
-  handleOnClick: any;
-  value: any;
+  value: value;
+  handleOnClick(): void;
 }
 
 const style: any = {
@@ -14,7 +16,7 @@ const style: any = {
   outline: 'none'
 };
 
-const Square = ({ handleOnClick, value }: Props) => (
+const Square: React.FC<Props> = ({ handleOnClick, value }: Props) => (
       <button style={style} onClick={handleOnClick}>{value}</button>
 );
 

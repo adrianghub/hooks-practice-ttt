@@ -1,4 +1,7 @@
-export function calculateWinner(squares) {
+type value = 'X' | 'O' | null;
+
+export const calculateWinner = (squares: value[]): value =>  {
+
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -17,12 +20,3 @@ export function calculateWinner(squares) {
   }
   return null;
 }
-
-// test array
-const squares = [
-  null, null, null,
-  'X', 'X', 'O',
-  null, null, null
-];
-
-console.log(calculateWinner(squares));

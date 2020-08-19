@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import Board from '../Board/Board';
-import { calculateWinner } from '../../helpers.js';
+import { calculateWinner } from '../../helpers';
 
 const styles: any = {
   width: '200px',
   margin: '20px auto',
 };
 
-const Game = () => {
+const Game: React.FC = () => {
   const [history, setHistory] = useState([Array(9).fill(null)]);
-  const [stepNumber, setStepNumber] = useState(0);
-  const [xIsNext, setXisNext] = useState(true);
+  const [stepNumber, setStepNumber] = useState<number>(0);
+  const [xIsNext, setXisNext] = useState<boolean>(true);
   const winner = calculateWinner(history[stepNumber]);
 
-  const handleClick = (i: any) => {
+  const handleClick = (i: number): void => {
     const timeInHistory = history.slice(0, stepNumber + 1);
     const current = timeInHistory[stepNumber];
     const squares = [...current];
@@ -25,7 +25,7 @@ const Game = () => {
     setXisNext(!xIsNext);
   }
   
-  const handleJumpTo = (step: any) => {
+  const handleJumpTo = (step: number): void => {
     setStepNumber(step);
     setXisNext(step % 2 === 0)
   }
